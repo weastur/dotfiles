@@ -1,18 +1,6 @@
 [user]
 	email = mail@amelius.me
 	name = Pavel Sapezhko
-[alias]
-	co = checkout
-	re = revert
-	ci = commit
-	br = branch
-	st = status -sb
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
-	pl = pull
-	ps = push
-	ssave = stash save
-	spop = stash pop
-	slist = stash list
 [branch]
 	autosetuprebase = always
 [push]
