@@ -15,6 +15,8 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
+Plugin 'fatih/vim-go'
+Plugin 'chriskempson/base16-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -104,8 +106,8 @@ set tm=500
 syntax enable
 
 set t_Co=256
-"set termguicolors
-colorscheme desert
+set termguicolors
+colorscheme base16-monokai
 set background=dark
 
 " Set utf8 as standard encoding and en_US as the standard language
