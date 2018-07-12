@@ -16,7 +16,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
 Plugin 'fatih/vim-go'
-Plugin 'chriskempson/base16-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -105,9 +104,7 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
-set t_Co=256
-set termguicolors
-colorscheme base16-monokai
+colorscheme desert
 set background=dark
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -138,6 +135,8 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+
+inoremap <S-Insert> <ESC>:setl paste<CR>gi<C-R>+<ESC>:setl nopaste<CR>gi
 
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
