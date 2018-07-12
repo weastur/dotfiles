@@ -5,8 +5,6 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-export TERM=xterm-256color
-
 export GOPATH=$HOME/src/golang
 export PATH=$PATH:$GOPATH/bin:$HOME/.local/bin
 
