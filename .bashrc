@@ -10,10 +10,6 @@ export PATH=$PATH:$GOPATH/bin:$HOME/.local/bin
 
 source <(kubectl completion bash)
 
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export WORKON_HOME=$HOME/src/envs
-source $HOME/.local/bin/virtualenvwrapper.sh
-
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 export VIEWER=vim
 
