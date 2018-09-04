@@ -12,11 +12,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
-Plugin 'tpope/vim-fugitive'
-Plugin 'fatih/vim-go'
-Plugin 'chriskempson/base16-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -105,8 +101,7 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
-let base16colorspace=256
-colorscheme base16-monokai
+colorscheme desert
 set background=dark
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -338,5 +333,3 @@ let g:tagbar_type_go = {
         \'c:const'
     \]
 \}
-
-map <F3> :NERDTreeToggle<CR>

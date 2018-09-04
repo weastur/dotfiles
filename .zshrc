@@ -107,3 +107,7 @@ export VAGRANT_DEFAULT_PROVIDER=virtualbox
 export VIEWER=vim
 
 export ANSIBLE_NOCOWS=1
+
+if [ -n "$DISPLAY" ]; then
+      xset b off
+fi
