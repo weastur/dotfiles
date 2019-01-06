@@ -2,26 +2,14 @@ set shell=/bin/bash
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'chriskempson/base16-vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'majutsushi/tagbar'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mileszs/ack.vim'
 
-call vundle#end()            " required
+call plug#end()
 
 filetype plugin indent on    " required
-
-set nu
 
 " Sets how many lines of history VIM has to remember
 set history=500
@@ -104,10 +92,7 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
-let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-monokai
-hi! Normal ctermbg=NONE guibg=NONE
-hi! NonText ctermbg=NONE guibg=NONE
+colorscheme desert
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -136,7 +121,7 @@ set tw=500
 
 set ai "Auto indent
 set si "Smart indent
-set wrap "Wrap lines
+set nowrap "No wrap lines
 
 inoremap <S-Insert> <ESC>:setl paste<CR>gi<C-R>+<ESC>:setl nopaste<CR>gi
 
@@ -187,11 +172,8 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Specify the behavior when switching between buffers
-try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
-catch
-endtry
+set switchbuf=useopen
+set stal=2
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -311,6 +293,8 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['pom.xml', '.p4ignore']
 let g:ctrlp_switch_buffer = 'et'
 
+let g:ackpreview = 1
+let g:ackhighlight = 1
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
   set grepprg=ag\ --nogroup\ --nocolor
@@ -322,5 +306,3 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-nmap <F3> :NERDTreeToggle<CR>
-nmap <F4> :TagbarToggle<CR>

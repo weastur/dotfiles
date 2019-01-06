@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/psapezhko/.oh-my-zsh"
+export ZSH="/home/weastur/.oh-my-zsh"
 export WORKON_HOME=$HOME/src/envs
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -71,7 +71,6 @@ plugins=(
   git
   pip
   tmux
-  virtualenvwrapper
   pipenv
   django
 )
@@ -111,9 +110,11 @@ source $ZSH/oh-my-zsh.sh
 
 export TERM=xterm-256color
 export GOPATH=$HOME/src/golang
-export PATH=$PATH:/usr/sbin:/usr/local/sbin:$GOPATH/bin:$HOME/.local/bin:/opt/bin
+export GOROOT=/opt/go
+export GEM_HOME=$HOME/.gem
+export PATH=$PATH:/usr/sbin:/usr/local/sbin:$HOME/opt/bin:$GOPATH/bin:$HOME/.local/bin:$GOROOT/bin:$GEM_HOME/bin:/opt/python-3.8.1/bin
 
-export VAGRANT_DEFAULT_PROVIDER=virtualbox
+export VAGRANT_DEFAULT_PROVIDER=libvirt
 export VIEWER=vim
 export EDITOR='vim'
 
@@ -122,8 +123,3 @@ export ANSIBLE_NOCOWS=1
 if [ -n "$DISPLAY" ]; then
       xset b off
 fi
-
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
