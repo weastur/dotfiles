@@ -101,7 +101,8 @@ syntax enable
 
 let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-greenscreen
-set background=dark
+hi! Normal ctermbg=NONE guibg=NONE
+hi! NonText ctermbg=NONE guibg=NONE
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
