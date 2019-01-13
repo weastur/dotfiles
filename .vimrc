@@ -12,6 +12,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
 
 call vundle#end()            " required
 
@@ -306,9 +307,14 @@ endfunction
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['pom.xml', '.p4ignore']
 let g:ctrlp_switch_buffer = 'et'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-let g:ctrlp_show_hidden = 1
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --hidden --ignore-dir={.git,.hg,.svn} --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
