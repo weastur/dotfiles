@@ -102,7 +102,7 @@ set tm=500
 syntax enable
 
 let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-greenscreen
+colorscheme base16-monokai
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE
 
