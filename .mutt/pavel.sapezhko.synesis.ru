@@ -1,0 +1,12 @@
+set imap_user = "pavel.sapezhko@synesis.ru"
+set imap_pass = ""
+set smtp_url = "smtp://pavel.sapezhko@synesis.ru@smtp.gmail.com:587/"
+set smtp_pass = ""
+set from = "pavel.sapezhko@synesis.ru"
+set realname = "Pavel Sapezhko"
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set header_cache = ~/.mutt/ru.synesis.pavel.sapezhko/cache/headers
+set message_cachedir = ~/.mutt/ru.synesis.pavel.sapezhko/cache/bodies
+set certificate_file = ~/.mutt/ru.synesis.pavel.sapezhko/certificates
