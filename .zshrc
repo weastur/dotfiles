@@ -108,6 +108,7 @@ source <(kubectl completion zsh)
 
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 export VIEWER=vim
+export EDITOR='vim'
 
 export ANSIBLE_NOCOWS=1
 
