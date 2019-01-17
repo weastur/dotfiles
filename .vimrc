@@ -13,6 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()            " required
 
@@ -102,7 +103,7 @@ set tm=500
 syntax enable
 
 let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-monokai
+colorscheme base16-greenscreen
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE
 
