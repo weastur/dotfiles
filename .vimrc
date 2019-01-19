@@ -15,6 +15,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()            " required
 
@@ -321,4 +322,5 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-map <F3> :NERDTreeToggle<CR>
+nmap <F3> :NERDTreeToggle<CR>
+nmap <F4> :TagbarToggle<CR>
