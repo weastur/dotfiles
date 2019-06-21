@@ -2,8 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/psapezhko/.oh-my-zsh"
-
+export ZSH="/home/psapezhko/.oh-my-zsh"
+export WORKON_HOME=$HOME/src/envs
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -64,6 +64,16 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  kubectl
+  ansible
+  docker
+  fabric
+  git
+  pip
+  tmux
+  virtualenvwrapper
+  pipenv
+  django
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -99,12 +109,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Base16 Shell
 
-
 export TERM=xterm-256color
 export GOPATH=$HOME/src/golang
-export PATH=$PATH:$GOPATH/bin:$HOME/.local/bin:/opt/bin
-
-source <(kubectl completion zsh)
+export PATH=$PATH:/usr/sbin:/usr/local/sbin:$GOPATH/bin:$HOME/.local/bin:/opt/bin
 
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 export VIEWER=vim
