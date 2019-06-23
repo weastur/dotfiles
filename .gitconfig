@@ -16,5 +16,4 @@
     di = diff
     ci = commit
     st = status
-    br = branch
     co = checkout
