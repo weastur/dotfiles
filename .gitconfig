@@ -1,7 +1,7 @@
 [user]
 	email = me@weastur.com
 	name = Pavel Sapezhko
-	signingKey = ""
+	signingkey = 73D422999BA70D80698CB746EB9BAC008E6D9B61
 [branch]
 	autosetuprebase = always
 [push]
@@ -30,6 +30,7 @@
 [gpg]
 	program = gpg
 [commit]
-	gpgSign = false
+	gpgsign = true
 [tag]
-	forceSignAnnotated = false
+	forceSignAnnotated = true
+
