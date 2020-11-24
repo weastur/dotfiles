@@ -8,7 +8,7 @@ export ZSH="/home/weastur/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="amuse"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -63,6 +63,24 @@ ZSH_THEME="robbyrussell"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  git
+  kubectl
+  ansible
+  docker
+  fabric
+  git
+  pip
+  tmux
+  pipenv
+  django
+)
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -91,37 +109,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH="/home/weastur/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 export WORKON_HOME=$HOME/src/envs
-export TERM=xterm-256color
 export GOPATH=$HOME/src/golang
 export VAGRANT_DEFAULT_PROVIDER=libvirt
-export EDITOR=nano
+export EDITOR=vim
 export ANSIBLE_NOCOWS=1
-export PATH=$PATH:$GOPATH/bin:$HOME/.local/bin:/opt/go/bin:$HOME/.poetry/bin
-
-
-source "/home/weastur/.local/share/dephell/_dephell_zsh_autocomplete"
-
-plugins=(
-  git
-  kubectl
-  ansible
-  docker
-  fabric
-  git
-  pip
-  tmux
-  pipenv
-  django
-)
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+export GEM_HOME=$HOME/.gem
+export PATH=$PATH:$GOPATH/bin:$HOME/.local/bin
+export GPG_TTY=$(tty)
