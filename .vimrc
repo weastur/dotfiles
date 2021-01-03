@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
+Plug 'chriskempson/base16-vim'
 
 call plug#end()
 
@@ -92,7 +93,9 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
-colorscheme desert
+let base16colorspace=256  " Access colors present in 256 colorspace
+set termguicolors
+colorscheme base16-monokai
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
