@@ -12,6 +12,12 @@ plugins=(
   tmux
   pipenv
   django
+  vagrant
+  vscode
+  terraform
+  ssh-agent
+  rsync
+  sudo
 )
 
 source $ZSH/oh-my-zsh.sh
