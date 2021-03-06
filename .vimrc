@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
+Plug 'chriskempson/base16-vim'
 
 call plug#end()
 
@@ -188,6 +189,10 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
+let base16colorspace=256  " Access colors present in 256 colorspace
+set termguicolors
+colorscheme base16-classic-light
+
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
@@ -303,6 +308,7 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
+
 
 
 
