@@ -30,3 +30,9 @@ export VAGRANT_EXPERIMENTAL="disks"
 export PATH=$PATH:$GOPATH/bin:$HOME/.local/bin
 export GPG_TTY=$(tty)
 
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+
