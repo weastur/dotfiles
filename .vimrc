@@ -6,7 +6,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
-Plug 'chriskempson/base16-vim'
 
 call plug#end()
 
@@ -189,9 +188,7 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-let base16colorspace=256  " Access colors present in 256 colorspace
-set termguicolors
-colorscheme base16-classic-light
+colorscheme desert
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
