@@ -1,4 +1,4 @@
-set shell=/bin/zsh
+set shell=/bin/bash
 set nocompatible              " be iMproved, required
 filetype off                  " required
 

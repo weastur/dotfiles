@@ -1,7 +1,7 @@
 [user]
-	email = me@weastur.com
+	email = pavel.sapezhko@gmail.com
 	name = Pavel Sapezhko
-	signingkey = 73D422999BA70D80698CB746EB9BAC008E6D9B61
+	signingkey = 71B68247864F43BDBA2936438A7F652DFF84CBB7
 [branch]
 	autosetuprebase = always
 [push]
@@ -33,4 +33,5 @@
 	gpgsign = true
 [tag]
 	forceSignAnnotated = true
-
+[includeIf "gitdir:~/src/w/"]
+    path = /home/weastur/.gitconfig-easybrain
