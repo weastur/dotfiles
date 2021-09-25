@@ -42,7 +42,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 export WORKON_HOME=$HOME/src/envs
 export GOPATH=$HOME/src/golang
-export EDITOR=vim
+export EDITOR=nano
 export ANSIBLE_NOCOWS=1
 export VAGRANT_EXPERIMENTAL="disks"
 export PATH=$PATH:$GOPATH/bin:$HOME/.local/bin
