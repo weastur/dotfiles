@@ -134,9 +134,6 @@ export NVM_DIR="$HOME/.nvm"
 
 alias travis=/home/weastur/.rvm/gems/ruby-3.0.0@travis_cli/wrappers/travis
 
-# added by travis gem
-[ ! -s /home/weastur/.travis/travis.sh ] || source /home/weastur/.travis/travis.sh
-
 export WORKON_HOME=$HOME/src/envs
 export GOPATH=$HOME/src/golang
 export EDITOR=vim
