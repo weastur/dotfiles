@@ -123,7 +123,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$PATH:$HOME/.rvm/bin"
 
 export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 export PATH="$HOME/.poetry/bin:$PATH"
@@ -135,13 +135,16 @@ export NVM_DIR="$HOME/.nvm"
 alias travis=/home/weastur/.rvm/gems/ruby-3.0.0@travis_cli/wrappers/travis
 
 export WORKON_HOME=$HOME/src/envs
+export GOROOT=/opt/go
 export GOPATH=$HOME/src/golang
 export EDITOR=vim
 export ANSIBLE_NOCOWS=1
 export VAGRANT_EXPERIMENTAL="disks"
-export PATH=$PATH:$GOPATH/bin:$HOME/.local/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/.local/bin
 export GPG_TTY=$(tty)
 
 export BORG_RSH='ssh -i <<PATH TO SERVER KEY>>'
 export BORG_UNKNOWN_UNENCRYPTED_REPO_ACCESS_IS_OK='yes'
 export BORG_RELOCATED_REPO_ACCESS_IS_OK='yes'
+
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
