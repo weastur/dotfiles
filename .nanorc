@@ -6,7 +6,6 @@ set historylog
 set indicator
 set linenumbers
 set locking
-set magic
 set minibar
 set mouse
 set multibuffer
