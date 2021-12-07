@@ -33,5 +33,3 @@
 	gpgsign = true
 [tag]
 	forceSignAnnotated = true
-[includeIf "gitdir:~/src/w/"]
-    path = /home/weastur/.gitconfig-easybrain

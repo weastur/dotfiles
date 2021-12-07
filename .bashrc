@@ -1,12 +1,14 @@
+# .bashrc
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
       *) return;;
 esac
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
 fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
@@ -48,10 +50,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-. "$HOME/.cargo/env"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 HISTTIMEFORMAT="%F %T "
 HISTIGNORE='ls:ll:ls -alh:pwd:clear:history'
@@ -67,22 +65,15 @@ shopt -s cmdhist
 shopt -s checkwinsize
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
-export WORKON_HOME=$HOME/src/envs
-export GOPATH=$HOME/src/golang
-export EDITOR=nano
+export EDITOR=vim
 export ANSIBLE_NOCOWS=1
-export VAGRANT_EXPERIMENTAL="disks"
+export VAGRANT_DEFAULT_PROVIDER="virtualbox"
 export PATH=$PATH:$GOPATH/bin:$HOME/.local/bin
 export GPG_TTY=$(tty)
 
 export BORG_RSH='ssh -i <<PATH TO SERVER KEY>>'
 export BORG_UNKNOWN_UNENCRYPTED_REPO_ACCESS_IS_OK='yes'
 export BORG_RELOCATED_REPO_ACCESS_IS_OK='yes'
-
-export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWCOLORHINTS=1
-export GIT_PS1_SHOWUNTRACKEDFILES=1
-PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\] @ \[\033[0;36m\]\h \w\[\033[0;32m\]$(__git_ps1)\n\[\033[0;32m\]└─\[\033[0m\033[0;32m\] \$\[\033[0m\033[0;32m\] ▶\[\033[0m\] '
 
 SSH_ENV="$HOME/.ssh/agent-environment"
 
@@ -106,3 +97,9 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
+
+source <(gh completion -s bash)
+
+# >>>> Vagrant command completion (start)
+. /opt/vagrant/embedded/gems/2.2.19/gems/vagrant-2.2.19/contrib/bash/completion.sh
+# <<<<  Vagrant command completion (end)
