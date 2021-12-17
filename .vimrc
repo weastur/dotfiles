@@ -1,16 +1,5 @@
 set shell=/bin/bash
 set nocompatible              " be iMproved, required
-filetype off                  " required
-
-call plug#begin('~/.vim/plugged')
-
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'mileszs/ack.vim'
-
-call plug#end()
-
-filetype plugin indent on    " required
-
 " Sets how many lines of history VIM has to remember
 set history=500
 
@@ -288,24 +277,3 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
-
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_root_markers = ['pom.xml', '.p4ignore']
-let g:ctrlp_switch_buffer = 'et'
-
-let g:ackpreview = 1
-let g:ackhighlight = 1
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --hidden --ignore-dir={.git,.hg,.svn} --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
-
-
-
