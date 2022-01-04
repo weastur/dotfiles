@@ -115,6 +115,8 @@ export EDITOR=nvim
 export VISUAL=nvim
 export ANSIBLE_NOCOWS=1
 export GPG_TTY=$(tty)
+export VIMCONFIG=~/.config/nvim
+export VIMDATA=~/.local/share/nvim
 
 alias vim=nvim
 alias vi=nvim
