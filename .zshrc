@@ -114,3 +114,6 @@ export GOPATH=$HOME/src/golang
 export EDITOR=nvim
 export ANSIBLE_NOCOWS=1
 export GPG_TTY=$(tty)
+
+alias vim=nvim
+alias vi=nvim
