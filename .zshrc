@@ -112,6 +112,7 @@ source $ZSH/oh-my-zsh.sh
 
 export GOPATH=$HOME/src/golang
 export EDITOR=nvim
+export VISUAL=nvim
 export ANSIBLE_NOCOWS=1
 export GPG_TTY=$(tty)
 
