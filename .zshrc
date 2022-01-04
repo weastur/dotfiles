@@ -71,6 +71,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  fzf
   git
   golang
   gh
@@ -117,6 +118,8 @@ export ANSIBLE_NOCOWS=1
 export GPG_TTY=$(tty)
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
+
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 alias vim=nvim
 alias vi=nvim
