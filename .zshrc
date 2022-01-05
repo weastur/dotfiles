@@ -125,6 +125,7 @@ export VIMDATA=~/.local/share/nvim
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --ansi'
 export FZF_DEFAULT_COMMAND='fd --type file --color=always'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_COMPLETION_TRIGGER='~~'
 
 alias vim=nvim
 alias vi=nvim
