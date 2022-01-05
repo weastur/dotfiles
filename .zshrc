@@ -131,3 +131,10 @@ alias vi=nvim
 alias ls='exa'
 alias l='exa -lga --group-directories-first --time-style=long-iso --color-scale'
 alias lt="l -T -L 2"
+
+# HTTPie
+alias https='http --default-scheme=https'
+
+function httpless {
+    http --pretty=all --print=hb "$@" | less -R;
+}
