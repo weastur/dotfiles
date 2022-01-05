@@ -74,6 +74,7 @@ plugins=(
   fzf
   git
   golang
+  ripgrep
   gh
   fd
   kubectl
