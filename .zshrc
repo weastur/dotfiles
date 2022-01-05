@@ -75,6 +75,7 @@ plugins=(
   git
   golang
   gh
+  fd
   kubectl
   ansible
   git
