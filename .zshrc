@@ -120,7 +120,9 @@ export GPG_TTY=$(tty)
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
 
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --ansi'
+export FZF_DEFAULT_COMMAND='fd --type file --color=always'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 alias vim=nvim
 alias vi=nvim
