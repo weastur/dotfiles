@@ -114,6 +114,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export GOPATH=$HOME/src/golang
+export PATH=$PATH:$HOME/.local/bin
 export EDITOR=nvim
 export VISUAL=nvim
 export ANSIBLE_NOCOWS=1
