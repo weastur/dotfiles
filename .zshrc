@@ -127,3 +127,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 alias vim=nvim
 alias vi=nvim
+
+alias ls='exa'
+alias l='exa -lga --group-directories-first --time-style=long-iso --color-scale'
+alias lt="l -T -L 2"
