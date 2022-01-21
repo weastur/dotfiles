@@ -33,3 +33,5 @@
 	gpgsign = true
 [tag]
 	forceSignAnnotated = true
+[remote "origin"]
+	prune = true
