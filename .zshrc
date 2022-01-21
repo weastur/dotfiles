@@ -113,6 +113,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export PATH="$HOME/.poetry/bin:$PATH"
+
 export GOPATH=$HOME/src/golang
 export PATH=$PATH:$HOME/.local/bin
 export EDITOR=nvim
@@ -141,7 +143,6 @@ _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 
-
 alias vim=nvim
 alias vi=nvim
 
@@ -155,3 +156,5 @@ alias https='http --default-scheme=https'
 function httpless {
     http --pretty=all --print=hb "$@" | less -R;
 }
+
+export VIRSH_DEFAULT_CONNECT_URI=qemu:///system
