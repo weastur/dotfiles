@@ -156,5 +156,3 @@ alias https='http --default-scheme=https'
 function httpless {
     http --pretty=all --print=hb "$@" | less -R;
 }
-
-export VIRSH_DEFAULT_CONNECT_URI=qemu:///system
