@@ -117,12 +117,10 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 export GOPATH=$HOME/src/golang
 export PATH=$PATH:$HOME/.local/bin
-export EDITOR=nvim
-export VISUAL=nvim
+export EDITOR=vim
+export VISUAL=vim
 export ANSIBLE_NOCOWS=1
 export GPG_TTY=$(tty)
-export VIMCONFIG=~/.config/nvim
-export VIMDATA=~/.local/share/nvim
 
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --ansi'
 export FZF_DEFAULT_COMMAND='fd --type file --color=always'
@@ -142,9 +140,6 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
-
-alias vim=nvim
-alias vi=nvim
 
 alias ls='exa'
 alias l='exa -lga --group-directories-first --time-style=long-iso --color-scale'
