@@ -71,18 +71,32 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  ansible
+  aws
+  docker
+  docker-compose
+  fd
   fzf
+  gh
+  git
   git
   golang
-  ripgrep
-  gh
-  fd
   kubectl
-  ansible
-  git
+  lxd
+  mongocli
+  nvm
+  pip
+  pipenv
+  poetry
+  postgres
+  pyenv
+  redis-cli
+  ripgrep
+  rust
+  rvm
   ssh-agent
   terraform
-  rust
+  vagrant
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -115,10 +129,21 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+
 export GOPATH=$HOME/src/golang
 export PATH=$PATH:$HOME/.local/bin
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 export ANSIBLE_NOCOWS=1
 export GPG_TTY=$(tty)
 
@@ -144,6 +169,9 @@ _fzf_compgen_dir() {
 alias ls='exa'
 alias l='exa -lga --group-directories-first --time-style=long-iso --color-scale'
 alias lt="l -T -L 2"
+
+alias vi=nvim
+alias vim=nvim
 
 # HTTPie
 alias https='http --default-scheme=https'
