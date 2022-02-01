@@ -140,6 +140,9 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 
+export VIMCONFIG=~/.config/nvim
+export VIMDATA=~/.local/share/nvim
+
 export GOPATH=$HOME/src/golang
 export PATH=$PATH:$HOME/.local/bin
 export EDITOR=nvim
