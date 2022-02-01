@@ -144,7 +144,7 @@ export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
 
 export GOPATH=$HOME/src/golang
-export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/bin:/snap/bin
 export EDITOR=nvim
 export VISUAL=nvim
 export ANSIBLE_NOCOWS=1
