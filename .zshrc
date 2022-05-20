@@ -26,6 +26,7 @@ export GPG_TTY=$(tty)
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export PATH=$PATH:$HOME/.local/bin
 
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
