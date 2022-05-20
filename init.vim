@@ -35,6 +35,13 @@ set softtabstop=4
 set tabstop=4
 set wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 set wildmenu
+set undofile
+set undodir=~/Library/nvim/undo
+
+augroup vimrc
+    autocmd!
+    autocmd BufWritePre /private/tmp/* setlocal noundofile
+augroup END
 
 filetype indent on
 filetype plugin on
@@ -53,6 +60,7 @@ function! PackInit() abort
 
   call minpac#add('tyru/open-browser.vim')
   call minpac#add('junegunn/fzf.vim')
+  call minpac#add('tpope/vim-projectionist')
 endfunction
 
 function! PackList(...)
@@ -72,7 +80,19 @@ let g:python3_host_prog = '/Users/weastur/.pyenv/versions/py3nvim/bin/python'
 
 " FZF
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let g:fzf_buffers_jump = 1
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 let g:fzf_tags_command = 'ctags -R'
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
+let g:fzf_action = {'ctrl-s': 'split', 'ctrl-v': 'vsplit'}
+autocmd! FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+function! s:fzf_statusline()
+  highlight fzf1 ctermfg=161 ctermbg=251
+  highlight fzf2 ctermfg=23 ctermbg=251
+  highlight fzf3 ctermfg=237 ctermbg=251
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
+nnoremap <c-p> :Files<cr>
