@@ -47,7 +47,7 @@ augroup END
 filetype indent on
 filetype plugin on
 
-colorscheme gruvbox
+colorscheme slate
 syntax enable
 command W w !sudo tee % > /dev/null
 
@@ -79,10 +79,12 @@ function! PackInit() abort
   call minpac#add('SirVer/ultisnips')
   call minpac#add('quangnguyen30192/cmp-nvim-ultisnips')
 
-  call minpac#add('morhetz/gruvbox')
-
   call minpac#add('hashivim/vim-terraform')
   call minpac#add('honza/vim-snippets')
+  call minpac#add('dense-analysis/ale')
+  call minpac#add('tpope/vim-dispatch')
+  call minpac#add('vim-test/vim-test')
+  call minpac#add('rodjek/vim-puppet')
 endfunction
 
 function! PackList(...)
@@ -156,6 +158,7 @@ let g:copilot_filetypes = {
       \ 'python': v:true,
       \ 'rust': v:true,
       \ 'go': v:true,
+      \ 'sh': v:true,
       \ }
 
 " Editor config
@@ -249,33 +252,49 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright',
-                  'rust_analyzer',
-                  'gopls',
-                  'terraform_lsp',
-                  'racket_langserver',
-                  'ansiblels',
-                  'cmake',
-                  'clangd',
-                  'dockerls',
-                  'yamlls',
-                  'sqlls',
-                  'kotlin_language_server',
-                  'jsonls',
-                  'cssls',
-                  'html',
-                  'eslint',
-                  'vimls',
-                  'bashls'}
+local servers = { 
+    'bashls',
+    'vimls',
+    'racket_langserver',
+    'kotlin_language_server',
+    'dockerls',
+    'cssls',
+    'html',
+    'eslint',
+    'jsonls',
+    'ltex',
+    'yamlls',
+    'ansiblels',
+    'cmake',
+    'sqlls',
+    'solargraph',
+    'gopls',
+    'clangd',
+    'pyright',
+    'rust_analyzer',
+    'terraform_lsp',
+                }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
     flags = {
-      -- This will be the default in neovim 0.7+
       debounce_text_changes = 150,
     }
   }
 end
+require('lspconfig').solargraph.setup{
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    },
+    settings = {
+      solargraph = {
+        diagnostics = true,
+        completion = true
+      }    
+    }
+}
+
 EOF
 
 " UltiSnips
@@ -283,3 +302,49 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
+
+" ALE
+let g:ale_linters = {
+    \ 'sh': ['shellcheck'],
+    \ 'dockerfile': ['hadolint'],
+    \ 'markdown': ['markdownlint'],
+    \ 'yaml': ['yamllint'],
+    \ 'cmake': ['cmakelint'],
+    \ 'puppet': ['puppet-lint'],
+    \ 'terraform': ['tflint'],
+    \ 'yaml.ansible': ['ansible-lint'],
+    \ }
+let g:ale_completion_enabled = 0
+let g:ale_disable_lsp = 0
+let g:ale_completion_autoimport = 0
+let g:ale_cursor_detail = 0
+let g:ale_echo_cursor = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
+set statusline=%<%f\ %{LinterStatus()}\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" vim-test
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+let test#strategy = "dispatch"
