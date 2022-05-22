@@ -1,5 +1,5 @@
 [user]
-	email = pavel.sapezhko@gmail.com
+	email = me@weastur.com
 	name = Pavel Sapezhko
 	signingkey = 71B68247864F43BDBA2936438A7F652DFF84CBB7
 [branch]
@@ -35,3 +35,5 @@
 	forceSignAnnotated = true
 [remote "origin"]
 	prune = true
+[includeIf "gitdir:/Users/weastur/src/w/"]
+    path = .gitconfig-easybrain
