@@ -15,6 +15,8 @@ fi
 
 setopt share_history
 
+bindkey -e
+
 export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_BAT=1
 export HOMEBREW_NO_ANALYTICS=1
@@ -32,6 +34,7 @@ alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 alias vim=nvim
 alias vi=nvim
+alias mux=tmuxinator
 
 export BORG_RSH='ssh -i /Users/weastur/.ssh/id_ed25519_server'
 export BORG_UNKNOWN_UNENCRYPTED_REPO_ACCESS_IS_OK='yes'
@@ -40,9 +43,6 @@ export BORG_RELOCATED_REPO_ACCESS_IS_OK='yes'
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 alias ls='exa'
 alias l='exa -lga --group-directories-first --time-style=long-iso --color-scale'
@@ -65,8 +65,6 @@ help() {
     "$@" --help 2>&1 | bathelp
 }
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --ansi'
 export FZF_DEFAULT_COMMAND='fd --type file --color=always'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -85,3 +83,8 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
