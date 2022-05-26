@@ -1,0 +1,31 @@
+# /Users/weastur/.config/tmuxinator/easybrain.yml
+
+name: easybrain
+root: ~/src/w
+
+startup_window: puppet
+attach: true
+
+windows:
+  - puppet:
+      root: ~/src/w/puppet
+      layout: tiled
+      panes:
+        - vim
+  - terraform:
+      root: ~/src/w/terraform
+      layout: tiled
+      panes:
+        - vim
+  - remote:
+      root: ~
+      layout: tiled
+      panes:
+        - ls
+        - ls
+        - ls
+        - ls
+  - console:
+      root: ~
+      layout: tiled
+
