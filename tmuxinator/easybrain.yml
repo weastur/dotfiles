@@ -5,8 +5,14 @@ root: ~/src/w
 
 startup_window: puppet
 attach: true
+startup_pane: 2
 
 windows:
+  - vpn:
+      root: ~/Documents/Easybrain OpenVPN
+      layout: tiled
+      panes:
+        - sudo openvpn --config ibm.ovpn
   - puppet:
       root: ~/src/w/puppet
       layout: tiled
