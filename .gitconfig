@@ -1,6 +1,6 @@
 [user]
 	email = me@weastur.com
-	name = Pavel Sapezhko
+	name = Pavel Sapezhka
 	signingkey = 71B68247864F43BDBA2936438A7F652DFF84CBB7
 [branch]
 	autosetuprebase = always
