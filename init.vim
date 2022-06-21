@@ -22,7 +22,7 @@ set nobackup
 set noerrorbells
 set noswapfile
 set novisualbell
-set nowrap
+set wrap
 set nowritebackup
 set number
 set ruler
@@ -34,7 +34,7 @@ set smartindent
 set smarttab
 set softtabstop=4
 set tabstop=4
-set undodir=~/Library/nvim/undo
+set undodir=~/.local/nvim/undo
 set undofile
 set wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 set wildmenu
@@ -56,11 +56,9 @@ augroup END
 filetype indent on
 filetype plugin on
 
-colorscheme slate
+colorscheme desert
 syntax enable
 command W w !sudo tee % > /dev/null
-
-set rtp+=/opt/homebrew/opt/fzf
 
 function! PackInit() abort
   packadd minpac
@@ -69,6 +67,7 @@ function! PackInit() abort
   call minpac#add('k-takata/minpac', {'type': 'opt'})
 
   call minpac#add('tyru/open-browser.vim')
+  call minpac#add('junegunn/fzf')
   call minpac#add('junegunn/fzf.vim')
   call minpac#add('tpope/vim-projectionist')
   call minpac#add('tpope/vim-fugitive')
@@ -109,7 +108,7 @@ command! PackUpdate call PackInit() | call minpac#update()
 command! PackClean  call PackInit() | call minpac#clean()
 command! PackStatus packadd minpac | call minpac#status()
 
-let g:python3_host_prog = '/Users/weastur/.pyenv/versions/py3nvim/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
 
 " FZF
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
@@ -135,11 +134,6 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
-" Start NERDTree, unless a file or session is specified, eg. vim -S session_file.vim.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == '' | NERDTree | endif
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
@@ -263,8 +257,6 @@ end
 -- map buffer local keybindings when the language server attaches
 local servers = {
     'bashls',
-    'kotlin_language_server',
-    'ltex',
     'yamlls',
     'ansiblels',
     'solargraph',
@@ -339,6 +331,7 @@ endfunction
 set statusline=%<%f\ %{LinterStatus()}\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <C-d> <Plug>(ale_detail)
 
 " vim-test
 nmap <silent> <leader>t :TestNearest<CR>
