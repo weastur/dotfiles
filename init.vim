@@ -69,13 +69,8 @@ function! PackInit() abort
   call minpac#add('tyru/open-browser.vim')
   call minpac#add('junegunn/fzf')
   call minpac#add('junegunn/fzf.vim')
-  call minpac#add('tpope/vim-projectionist')
   call minpac#add('tpope/vim-fugitive')
-  call minpac#add('preservim/nerdtree')
-  call minpac#add('Xuyuanp/nerdtree-git-plugin')
-  call minpac#add('ryanoasis/vim-devicons')
   call minpac#add('github/copilot.vim')
-  call minpac#add('editorconfig/editorconfig-vim')
 
   call minpac#add('neovim/nvim-lspconfig')
   call minpac#add('hrsh7th/cmp-nvim-lsp')
@@ -90,8 +85,6 @@ function! PackInit() abort
   call minpac#add('hashivim/vim-terraform')
   call minpac#add('honza/vim-snippets')
   call minpac#add('dense-analysis/ale')
-  call minpac#add('tpope/vim-dispatch')
-  call minpac#add('vim-test/vim-test')
   call minpac#add('rodjek/vim-puppet')
 endfunction
 
@@ -129,32 +122,6 @@ endfunction
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 nnoremap <c-p> :Files<cr>
 
-" NERDTree
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-" Open the existing NERDTree on each new tab.
-autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✹',
-                \ 'Staged'    :'✚',
-                \ 'Untracked' :'✭',
-                \ 'Renamed'   :'➜',
-                \ 'Unmerged'  :'═',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
-                \ 'Ignored'   :'☒',
-                \ 'Clean'     :'✔︎',
-                \ 'Unknown'   :'?',
-                \ }
-let g:NERDTreeGitStatusShowIgnored = 1
-let g:NERDTreeGitStatusShowClean = 1
-let g:NERDTreeGitStatusConcealBrackets = 1
-
 " Copilot
 let g:copilot_filetypes = {
       \ '*': v:false,
@@ -163,6 +130,7 @@ let g:copilot_filetypes = {
       \ 'go': v:true,
       \ 'sh': v:true,
       \ }
+let g:copilot_node_command = "/opt/homebrew/opt/node@16/bin/node"
 
 " Editor config
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
@@ -333,10 +301,3 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nmap <silent> <C-d> <Plug>(ale_detail)
 
-" vim-test
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
-let test#strategy = "dispatch"

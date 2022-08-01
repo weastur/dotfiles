@@ -71,31 +71,51 @@ ZSH_THEME="spaceship"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  ag
   ansible
+  autoenv
   aws
+  brew
+  bundler
+  composer
+  cp
+  direnv
   docker
   docker-compose
+  dotenv
   fd
   fzf
   gh
   git
-  git
+  git-auto-fetch
+  git-lfs
+  gitignore
+  gnu-utils
   golang
+  gpg-agent
+  helm
+  httpie
+  jsontools
   kubectl
   lxd
+  minikube
   mongocli
+  nmap
   nvm
   pip
   pipenv
   poetry
   postgres
   pyenv
+  python
   redis-cli
   ripgrep
   rust
   rvm
   ssh-agent
   terraform
+  tmux
+  tmuxinator
   vagrant
 )
 
@@ -128,51 +148,65 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH=$PATH:$HOME/.local/bin:$HOME/go/bin
 
-export EDITOR=vim
-export VISUAL=vim
+alias bathelp='bat --plain --language=help'
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+alias cat='bat -p --paging=never'
+alias https='http --default-scheme=https'
+alias l='exa -lga --group-directories-first --time-style=long-iso --color-scale'
+alias ls='exa'
+alias lt="l -T -L 2"
+alias vi=nvim
+alias vim=nvim
+
 export ANSIBLE_NOCOWS=1
-export GPG_TTY=$(tty)
-
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --ansi'
-export FZF_DEFAULT_COMMAND='fdfind --type file --color=always'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_COMPLETION_TRIGGER='~~'
+export BORG_RELOCATED_REPO_ACCESS_IS_OK='yes'
+export BORG_RSH='ssh -i /Users/weastur/.ssh/id_ed25519_server'
+export BORG_UNKNOWN_UNENCRYPTED_REPO_ACCESS_IS_OK='yes'
+export EDITOR=nvim
 export FZF_COMPLETION_OPTS='--border --info=inline'
+export FZF_COMPLETION_TRIGGER='~~'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_COMMAND='fdfind --type file --color=always'
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --ansi'
+export GPG_TTY=$(tty)
+export HOMEBREW_BAT=1
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_EMOJI=1
+export HOMEBREW_NO_ENV_HINTS=1
+export LESS='-SXFR'
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH=$PATH:$HOME/.local/bin:$HOME/go/bin
+export PYENV_ROOT="$HOME/.pyenv"
+export VIMCONFIG=~/.config/nvim
+export VIMDATA=~/.local/share/nvim
+export VISUAL=nvim
 
-# Use fd (https://github.com/sharkdp/fd) instead of the default find
-# command for listing path candidates.
-# - The first argument to the function ($1) is the base path to start traversal
-# - See the source code (completion.{bash,zsh}) for the details.
 _fzf_compgen_path() {
   fdfind --hidden --follow --exclude ".git" . "$1"
 }
 
-# Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
   fdfind --type d --hidden --follow --exclude ".git" . "$1"
 }
-
-alias ls='exa'
-alias l='exa -lga --group-directories-first --time-style=long-iso --color-scale'
-alias lt="l -T -L 2"
-
-alias mux=tmuxinator
-
-# HTTPie
-alias https='http --default-scheme=https'
 
 function httpless {
     http --pretty=all --print=hb "$@" | less -R;
 }
 
-alias cat='batcat -p --paging=never'
 batdiff() {
     git diff --name-only --relative --diff-filter=d | xargs batcat --diff
 }
-export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
-alias bathelp='batcat --plain --language=help'
+
 help() {
     "$@" --help 2>&1 | bathelp
 }
+
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+fpath+=(~/.config/hcloud/completion/zsh)
+autoload -Uz compinit; compinit
