@@ -101,7 +101,7 @@ command! PackUpdate call PackInit() | call minpac#update()
 command! PackClean  call PackInit() | call minpac#clean()
 command! PackStatus packadd minpac | call minpac#status()
 
-let g:python3_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/Users/pavelsapezhka/.pyenv/versions/py3nvim/bin/python'
 
 " FZF
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']

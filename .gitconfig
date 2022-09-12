@@ -1,19 +1,20 @@
 [user]
-	email = me@weastur.com
-	name = Pavel Sapezhka
-	signingkey = C1FC1D01F90412D53941648C21B982BF130202F7
+    email = me@weastur.com
+    name = Pavel Sapezhka
+    signingkey = C1FC1D01F90412D53941648C21B982BF130202F7
 [branch]
-	autosetuprebase = always
+    autosetuprebase = always
 [push]
-	default = simple
+    default = simple
+    autoSetupRemote = true
 [core]
-	editor = vim
-	excludesfile = ~/.gitignore
+    editor = vim
+    excludesfile = ~/.gitignore
 [diff]
-	tool = vimdiff
-	renameLimit = 1833
+    tool = vimdiff
+    renameLimit = 1833
 [alias]
-	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
     di = diff
     br = branch
     ci = commit
@@ -23,19 +24,19 @@
     ssave = stash save
     spop = stash pop
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
 [gpg]
-	program = gpg
+    program = gpg
 [commit]
-	gpgsign = true
+    gpgsign = true
 [tag]
-	forceSignAnnotated = true
+    forceSignAnnotated = true
 [remote "origin"]
-	prune = true
+    prune = true
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [includeIf "gitdir:/Users/weastur/src/w/"]
-     path = .gitconfig-easybrain
+    path = .gitconfig-easybrain
