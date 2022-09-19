@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -119,7 +119,6 @@ plugins=(
   vagrant
 )
 
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -148,6 +147,13 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
 
 alias bathelp='bat --plain --language=help'
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
@@ -158,16 +164,17 @@ alias ls='exa'
 alias lt="l -T -L 2"
 alias vi=nvim
 alias vim=nvim
+alias mux=tmuxinator
 
 export ANSIBLE_NOCOWS=1
 export BORG_RELOCATED_REPO_ACCESS_IS_OK='yes'
-export BORG_RSH='ssh -i /Users/weastur/.ssh/id_ed25519_server'
+export BORG_RSH='ssh -i /Users/pavelsapezhka/.ssh/id_ed25519_server'
 export BORG_UNKNOWN_UNENCRYPTED_REPO_ACCESS_IS_OK='yes'
 export EDITOR=nvim
 export FZF_COMPLETION_OPTS='--border --info=inline'
 export FZF_COMPLETION_TRIGGER='~~'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_COMMAND='fdfind --type file --color=always'
+export FZF_DEFAULT_COMMAND='fd --type file --color=always'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --ansi'
 export GPG_TTY=$(tty)
 export HOMEBREW_BAT=1
@@ -176,19 +183,19 @@ export HOMEBREW_NO_EMOJI=1
 export HOMEBREW_NO_ENV_HINTS=1
 export LESS='-SXFR'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export PATH="$PATH:$HOME/.rvm/bin"
 export PATH=$PATH:$HOME/.local/bin:$HOME/go/bin
 export PYENV_ROOT="$HOME/.pyenv"
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
 export VISUAL=nvim
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 _fzf_compgen_path() {
-  fdfind --hidden --follow --exclude ".git" . "$1"
+  fd --hidden --follow --exclude ".git" . "$1"
 }
 
 _fzf_compgen_dir() {
-  fdfind --type d --hidden --follow --exclude ".git" . "$1"
+  fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 
 function httpless {
@@ -196,7 +203,7 @@ function httpless {
 }
 
 batdiff() {
-    git diff --name-only --relative --diff-filter=d | xargs batcat --diff
+    git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
 
 help() {
@@ -208,5 +215,4 @@ eval "$(pyenv init -)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-fpath+=(~/.config/hcloud/completion/zsh)
-autoload -Uz compinit; compinit
+eval "$(rbenv init - zsh)"
