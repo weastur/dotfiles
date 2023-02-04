@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
+ZSH_THEME="afowler"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -73,6 +73,7 @@ ZSH_THEME="spaceship"
 plugins=(
   ag
   ansible
+  autoenv
   aws
   brew
   bundler
@@ -105,7 +106,6 @@ plugins=(
   pipenv
   poetry
   postgres
-  pyenv
   python
   redis-cli
   ripgrep
@@ -146,8 +146,22 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias bathelp='batcat --plain --language=help'
-alias cat='batcat -p --paging=never'
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(rbenv init - zsh)"
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+alias bathelp='bat --plain --language=help'
+alias cat='bat -p --paging=never'
 alias https='http --default-scheme=https'
 alias l='exa -lga --group-directories-first --time-style=long-iso --color-scale'
 alias ls='exa'
@@ -155,24 +169,29 @@ alias lt="l -T -L 2"
 alias mux=tmuxinator
 
 export ANSIBLE_NOCOWS=1
-export EDITOR=nano
+export EDITOR=vim
+export VISUAL=vim
 export FZF_COMPLETION_OPTS='--border --info=inline'
 export FZF_COMPLETION_TRIGGER='~~'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_COMMAND='fdfind --type file --color=always'
+export FZF_DEFAULT_COMMAND='fd --type file --color=always'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --ansi'
 export GPG_TTY=$(tty)
+export HOMEBREW_BAT=1
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_EMOJI=1
+export HOMEBREW_NO_ENV_HINTS=1
 export LESS='-SXFR'
-export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
-export GOROOT=/opt/go
-export PATH=$HOME/.local/bin:$HOME/go/bin:$GOROOT/bin:$PATH
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export PATH=$PATH:$HOME/.local/bin:$HOME/go/bin
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 _fzf_compgen_path() {
-  fdfind --hidden --follow --exclude ".git" . "$1"
+  fd --hidden --follow --exclude ".git" . "$1"
 }
 
 _fzf_compgen_dir() {
-  fdfind --type d --hidden --follow --exclude ".git" . "$1"
+  fb --type d --hidden --follow --exclude ".git" . "$1"
 }
 
 function httpless {
@@ -180,12 +199,9 @@ function httpless {
 }
 
 batdiff() {
-    git diff --name-only --relative --diff-filter=d | xargs batcat --diff
+    git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
 
 help() {
     "$@" --help 2>&1 | bathelp
 }
-
-eval "$(/home/weastur/.rbenv/bin/rbenv init - zsh)"
-
