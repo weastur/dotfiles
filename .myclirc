@@ -27,7 +27,7 @@ log_level = INFO
 # line below.
 # audit_log = ~/.mycli-audit.log
 
-# Timing of sql statments and table rendering.
+# Timing of sql statements and table rendering.
 timing = True
 
 # Beep after long-running queries are completed; 0 to disable.
@@ -66,7 +66,7 @@ wider_completion_menu = True
 # \R - The current time, in 24-hour military time (0-23)
 # \r - The current time, standard 12-hour time (1-12)
 # \s - Seconds of the current time
-# \t - Product type (Percona, MySQL, MariaDB)
+# \t - Product type (Percona, MySQL, MariaDB, TiDB)
 # \A - DSN alias name (from the [alias_dsn] section)
 # \u - Username
 # \x1b[...m - insert ANSI escape sequence
@@ -88,6 +88,9 @@ keyword_casing = auto
 
 # disabled pager on startup
 enable_pager = True
+
+# Choose a specific pager
+pager = less
 audit_log = ~/.mycli-audit.log
 
 # Custom colors for the completion menu, toolbar, etc.
@@ -151,21 +154,29 @@ output.null = "#808080"
 # Favorite queries.
 [favorite_queries]
 gr-info = "SELECT MEMBER_ID, MEMBER_HOST, MEMBER_STATE, MEMBER_ROLE, MEMBER_VERSION FROM performance_schema.replication_group_members ORDER BY MEMBER_HOST;"
+gr-set-primary = "SELECT group_replication_set_as_primary('$1');"
 clone-progress = "SELECT STAGE, STATE, END_TIME FROM performance_schema.clone_progress;"
 clone-status = SELECT STATE FROM performance_schema.clone_status;
 proxysql-runtime-servers = "SELECT hostgroup_id,hostname,status FROM runtime_mysql_servers ORDER BY hostname;"
-proxysql-persist-users = "LOAD MYSQL USERS TO RUNTIME; SAVE MYSQL USERS TO DISK;"
-proxysql-persist-servers = "LOAD MYSQL SERVERS TO RUNTIME; SAVE MYSQL SERVERS TO DISK;"
-proxysql-persist-rules = "LOAD MYSQL QUERY RULES TO RUNTIME; SAVE MYSQL QUERY RULES TO DISK;"
-proxysql-persist-vars = "LOAD MYSQL VARIABLES TO RUNTIME; SAVE MYSQL VARIABLES TO DISK;"
-proxysql-persist-admin-vars = "LOAD ADMIN VARIABLES TO RUNTIME; SAVE ADMIN VARIABLES TO DISK;"
-proxysql-maintain-server = "UPDATE mysql_servers SET status='OFFLINE_SOFT' WHERE hostname='$1'; LOAD MYSQL SERVERS TO RUNTIME; SAVE MYSQL SERVERS TO DISK;"
-proxysql-online-server = "UPDATE mysql_servers SET status='ONLINE' WHERE hostname='$1'; LOAD MYSQL SERVERS TO RUNTIME; SAVE MYSQL SERVERS TO DISK;"
-proxysql-delete-server = "DELETE FROM mysql_servers WHERE hostname='$1'; LOAD MYSQL SERVERS TO RUNTIME; SAVE MYSQL SERVERS TO DISK;"
+proxysql-persist-users = LOAD MYSQL USERS TO RUNTIME; SAVE MYSQL USERS TO DISK;
+proxysql-persist-servers = LOAD MYSQL SERVERS TO RUNTIME; SAVE MYSQL SERVERS TO DISK;
+proxysql-persist-rules = LOAD MYSQL QUERY RULES TO RUNTIME; SAVE MYSQL QUERY RULES TO DISK;
+proxysql-persist-vars = LOAD MYSQL VARIABLES TO RUNTIME; SAVE MYSQL VARIABLES TO DISK;
+proxysql-persist-admin-vars = LOAD ADMIN VARIABLES TO RUNTIME; SAVE ADMIN VARIABLES TO DISK;
+proxysql-maintain-server = UPDATE mysql_servers SET status='OFFLINE_SOFT' WHERE hostname='$1'; LOAD MYSQL SERVERS TO RUNTIME; SAVE MYSQL SERVERS TO DISK;
+proxysql-online-server = UPDATE mysql_servers SET status='ONLINE' WHERE hostname='$1'; LOAD MYSQL SERVERS TO RUNTIME; SAVE MYSQL SERVERS TO DISK;
+proxysql-delete-server = DELETE FROM mysql_servers WHERE hostname='$1'; LOAD MYSQL SERVERS TO RUNTIME; SAVE MYSQL SERVERS TO DISK;
 proxysql-stats-conn = "SELECT hostgroup hg, srv_host, status, ConnUsed, ConnFree, ConnOK, ConnERR, MaxConnUsed FROM stats_mysql_connection_pool;"
-proxysql-stats-users = "SELECT * FROM stats_mysql_users;"
+proxysql-stats-users = SELECT * FROM stats_mysql_users;
 proxysql-stats-processlist = "SELECT user, db, cli_host, cli_port, hostgroup, command, time_ms, info FROM stats_mysql_processlist;"
-proxysql-stats-rules = "SELECT * FROM stats_mysql_query_rules;"
+proxysql-stats-rules = SELECT * FROM stats_mysql_query_rules;
+users = "SELECT user,host FROM mysql.user;"
+grants = SHOW GRANTS FOR `$1`;
+stored-objects-definers = SELECT DISTINCT DEFINER FROM INFORMATION_SCHEMA.EVENTS;SELECT DISTINCT DEFINER FROM INFORMATION_SCHEMA.ROUTINES;SELECT DISTINCT DEFINER FROM INFORMATION_SCHEMA.TRIGGERS;SELECT DISTINCT DEFINER FROM INFORMATION_SCHEMA.VIEWS;
+events-by-definer = "SELECT EVENT_SCHEMA, EVENT_NAME FROM INFORMATION_SCHEMA.EVENTS WHERE DEFINER = '$1';"
+routines-by-definer = "SELECT ROUTINE_SCHEMA, ROUTINE_NAME, ROUTINE_TYPE FROM INFORMATION_SCHEMA.ROUTINES WHERE DEFINER = '$1';"
+triggers-by-definer = "SELECT TRIGGER_SCHEMA, TRIGGER_NAME FROM INFORMATION_SCHEMA.TRIGGERS WHERE DEFINER = '$1';"
+views-by-definer = "SELECT TABLE_SCHEMA, TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS WHERE DEFINER = '$1';"
 
 # Use the -d option to reference a DSN.
 # Special characters in passwords and other strings can be escaped with URL encoding.
