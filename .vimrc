@@ -225,6 +225,12 @@ map <leader>x :e ~/buffer.md<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+" Enable wrapping for txt files
+autocmd BufRead,BufNewFile *.txt set wrap
+
+" Enable wrapping for markdown files
+autocmd BufRead,BufNewFile *.md set wrap
+
 " Returns true if paste mode is enabled
 function! HasPaste()
     if &paste

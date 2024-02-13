@@ -1,7 +1,7 @@
 [user]
     email = me@weastur.com
     name = Pavel Sapezhka
-    signingkey = C1FC1D01F90412D53941648C21B982BF130202F7
+    signingkey = FE40E910D7B03DD2BB224543C1634B2A92AF4FE4
 [branch]
     autosetuprebase = always
 [push]
@@ -38,9 +38,3 @@
     prune = true
 [init]
     defaultBranch = main
-[color "diff"]
-    meta = blue
-    old = 237
-    new = magenta
-[includeIf "gitdir:/Users/weastur/src/w/"]
-    path = .gitconfig-easybrain
