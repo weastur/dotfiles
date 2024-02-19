@@ -10,8 +10,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="mm/dd/yyyy"
 
 plugins=(
-  ansible
-  aws
   brew
   direnv
   fd
@@ -22,7 +20,6 @@ plugins=(
   gitignore
   gpg-agent
   httpie
-  kubectl
   nmap
   pip
   podman
@@ -30,12 +27,8 @@ plugins=(
   python
   ripgrep
   rust
-  ssh-agent
-  terraform
   tmux
   tmuxinator
-  vagrant
-  vault
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -99,4 +92,5 @@ batdiff() {
 help() {
     "$@" --help 2>&1 | bathelp
 }
-fpath=(~/.config/zsh/completion_files /opt/homebrew/share/zsh-completions /Users/weastur/.oh-my-zsh/plugins/vault /Users/weastur/.oh-my-zsh/plugins/vagrant /Users/weastur/.oh-my-zsh/plugins/tmuxinator /Users/weastur/.oh-my-zsh/plugins/tmux /Users/weastur/.oh-my-zsh/plugins/terraform /Users/weastur/.oh-my-zsh/plugins/ssh-agent /Users/weastur/.oh-my-zsh/plugins/rust /Users/weastur/.oh-my-zsh/plugins/ripgrep /Users/weastur/.oh-my-zsh/plugins/python /Users/weastur/.oh-my-zsh/plugins/poetry /Users/weastur/.oh-my-zsh/plugins/podman /Users/weastur/.oh-my-zsh/plugins/pip /Users/weastur/.oh-my-zsh/plugins/nmap /Users/weastur/.oh-my-zsh/plugins/kubectl /Users/weastur/.oh-my-zsh/plugins/httpie /Users/weastur/.oh-my-zsh/plugins/gpg-agent /Users/weastur/.oh-my-zsh/plugins/gitignore /Users/weastur/.oh-my-zsh/plugins/git-lfs /Users/weastur/.oh-my-zsh/plugins/git /Users/weastur/.oh-my-zsh/plugins/gh /Users/weastur/.oh-my-zsh/plugins/fzf /Users/weastur/.oh-my-zsh/plugins/fd /Users/weastur/.oh-my-zsh/plugins/direnv /Users/weastur/.oh-my-zsh/plugins/brew /Users/weastur/.oh-my-zsh/plugins/aws /Users/weastur/.oh-my-zsh/plugins/ansible /Users/weastur/.oh-my-zsh/functions /Users/weastur/.oh-my-zsh/completions /Users/weastur/.oh-my-zsh/cache/completions /usr/local/share/zsh/site-functions /usr/share/zsh/site-functions /usr/share/zsh/5.9/functions /opt/homebrew/share/zsh/site-functions)
+
+export SSH_AUTH_SOCK=""
