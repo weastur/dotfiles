@@ -1,0 +1,4 @@
+[user]
+    email = me@weastur.com
+    name = Pavel Sapezhka
+    signingkey = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKtcMwUOpuTjb0kqo1zFlIqwseFwD+YIqlk9wspWeG3Z"
