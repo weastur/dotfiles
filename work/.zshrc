@@ -55,8 +55,8 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-alias bathelp='bat --plain --language=help'
-alias cat='bat -p -P'
+alias bathelp='bat --plain --theme="Solarized (dark)" --language=help'
+alias cat='bat --theme="Solarized (dark)" -p -P'
 alias https='http --default-scheme=https'
 alias l='exa -lga --group-directories-first --time-style=long-iso --color-scale'
 alias ls='exa'
@@ -77,7 +77,7 @@ export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_EMOJI=1
 export HOMEBREW_NO_ENV_HINTS=1
 export LESS='-SXFR'
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANPAGER="sh -c 'col -bx | bat --theme=\"Solarized (dark)\" -l man -p'"
 export PATH=$PATH:$HOME/.local/bin:$HOME/go/bin
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export EKSCTL_ENABLE_CREDENTIAL_CACHE=1
@@ -98,7 +98,7 @@ function httpless {
 }
 
 batdiff() {
-    git diff --name-only --relative --diff-filter=d | xargs bat --diff
+    git diff --name-only --relative --diff-filter=d | xargs bat --theme='Solarized (dark)' --diff
 }
 
 help() {
