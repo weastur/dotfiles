@@ -11,6 +11,7 @@ HIST_STAMPS="mm/dd/yyyy"
 
 plugins=(
   brew
+  consul
   direnv
   fd
   fzf
@@ -20,6 +21,7 @@ plugins=(
   gitignore
   gpg-agent
   httpie
+  kubectl
   nmap
   pip
   podman
@@ -27,8 +29,10 @@ plugins=(
   python
   ripgrep
   rust
+  terraform
   tmux
   tmuxinator
+  vault
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -46,8 +50,8 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-alias bathelp='bat --plain --language=help'
-alias cat='bat -p -P'
+alias bathelp='bat --plain --theme="Solarized (dark)" --language=help'
+alias cat='bat --theme="Solarized (dark)" -p -P'
 alias https='http --default-scheme=https'
 alias l='exa -lga --group-directories-first --time-style=long-iso --color-scale'
 alias ls='exa'
@@ -68,7 +72,7 @@ export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_EMOJI=1
 export HOMEBREW_NO_ENV_HINTS=1
 export LESS='-SXFR'
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANPAGER="sh -c 'col -bx | bat --theme=\"Solarized (dark)\" -l man -p'"
 export PATH=$PATH:$HOME/.local/bin
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export CONTAINERS_MACHINE_PROVIDER=applehv
@@ -86,11 +90,11 @@ function httpless {
 }
 
 batdiff() {
-    git diff --name-only --relative --diff-filter=d | xargs bat --diff
+    git diff --name-only --relative --diff-filter=d | xargs bat --theme='Solarized (dark)' --diff
 }
 
 help() {
     "$@" --help 2>&1 | bathelp
 }
 
-export SSH_AUTH_SOCK=""
+export SSH_AUTH_SOCK="/Users/weastur/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
