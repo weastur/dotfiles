@@ -1,0 +1,6 @@
+ServerAliveInterval 60
+
+Host *
+    User weastur
+    ForwardAgent yes
+    AddKeysToAgent yes

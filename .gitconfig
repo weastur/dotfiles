@@ -1,7 +1,15 @@
 [user]
     email = me@weastur.com
     name = Pavel Sapezhka
-    signingkey = FE40E910D7B03DD2BB224543C1634B2A92AF4FE4
+    signingkey = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKtcMwUOpuTjb0kqo1zFlIqwseFwD+YIqlk9wspWeG3Z"
+[commit]
+    gpgsign = true
+[gpg]
+    format = ssh
+[gpg.ssh]
+    allowedSignersFile = "/Users/weastur/.ssh/allowed_signers"
+[tag]
+    forceSignAnnotated = true
 [branch]
     autosetuprebase = always
 [push]
@@ -28,12 +36,6 @@
     process = git-lfs filter-process
     required = true
     clean = git-lfs clean -- %f
-[gpg]
-    program = gpg
-[commit]
-    gpgsign = true
-[tag]
-    forceSignAnnotated = true
 [remote "origin"]
     prune = true
 [init]

@@ -1,0 +1,8 @@
+tap "hashicorp/tap"
+tap "homebrew/bundle"
+brew "aria2"
+brew "ffmpeg"
+brew "ipython"
+brew "yt-dlp"
+brew "mpv"
+brew "zsh-completions"
