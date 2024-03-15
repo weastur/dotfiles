@@ -7,29 +7,16 @@ DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="false"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-HIST_STAMPS="mm/dd/yyyy"
-
+HIST_STAMPS="dd/mm/yyyy"
 plugins=(
-  brew
-  git
-  gitignore
-  pip
-  python
+  podman
   ssh-agent
 )
 
 source $ZSH/oh-my-zsh.sh
 
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-  autoload -Uz compinit
-  compinit
-fi
-
-alias ipython=ipython3
-
 export EDITOR=vim
 export VISUAL=vim
 export LESS='-SXFR'
-export PATH=$PATH:$HOME/.local/bin
+
+alias wtools='podman run --rm -v "$(pwd)":/wdir --net=host -ti wtools bash'
