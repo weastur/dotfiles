@@ -18,8 +18,6 @@ plugins=(
   brew
   composer
   direnv
-  docker
-  docker-compose
   fd
   fzf
   gh
@@ -33,6 +31,7 @@ plugins=(
   nmap
   pass
   pip
+  podman
   poetry
   python
   ripgrep
