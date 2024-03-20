@@ -9,14 +9,7 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd/mm/yyyy"
 plugins=(
-  1password
-  adb
-  aliases
-  ansible
-  ant
-  argocd
   brew
-  composer
   direnv
   fd
   fzf
@@ -27,20 +20,15 @@ plugins=(
   golang
   gpg-agent
   httpie
-  kubectl
   nmap
-  pass
   pip
   podman
   poetry
+  pre-commit
   python
   ripgrep
   rust
-  terraform
-  tmux
-  tmuxinator
-  vault
-  vscode
+  ssh-agent
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -54,18 +42,12 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(rbenv init - zsh)"
-
-alias bathelp='bat --plain --theme="Solarized (dark)" --language=help'
-alias cat='bat --theme="Solarized (dark)" -p -P'
+alias bathelp='bat --plain --language=help'
+alias cat='bat -p -P'
 alias https='http --default-scheme=https'
 alias l='exa -lga --group-directories-first --time-style=long-iso --color-scale'
 alias ls='exa'
 alias lt="l -T -L 2"
-alias mux=tmuxinator
 alias ipython=ipython3
 
 export EDITOR=vim
@@ -81,10 +63,8 @@ export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_EMOJI=1
 export HOMEBREW_NO_ENV_HINTS=1
 export LESS='-SXFR'
-export MANPAGER="sh -c 'col -bx | bat --theme=\"Solarized (dark)\" -l man -p'"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export PATH=$PATH:$HOME/.local/bin
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export CONTAINERS_MACHINE_PROVIDER=applehv
 
 _fzf_compgen_path() {
   fd --hidden --follow --exclude ".git" . "$1"
@@ -99,7 +79,7 @@ function httpless {
 }
 
 batdiff() {
-    git diff --name-only --relative --diff-filter=d | xargs bat --theme='Solarized (dark)' --diff
+    git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
 
 help() {
