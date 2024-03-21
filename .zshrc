@@ -1,5 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
+ZSH_THEME="afowler"
 HYPHEN_INSENSITIVE="true"
 zstyle ':omz:update' mode disabled
 DISABLE_MAGIC_FUNCTIONS="true"
@@ -9,8 +9,11 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd/mm/yyyy"
 plugins=(
-  brew
+  ansible
+  ant
   direnv
+  docker
+  docker-compose
   fd
   fzf
   gh
@@ -20,30 +23,25 @@ plugins=(
   golang
   gpg-agent
   httpie
+  kubectl
   nmap
+  pass
   pip
-  podman
   poetry
   pre-commit
   python
   ripgrep
   rust
   ssh-agent
+  terraform
+  tmux
+  tmuxinator
 )
 
 source $ZSH/oh-my-zsh.sh
 
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-  autoload -Uz compinit
-  compinit
-fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-alias bathelp='bat --plain --language=help'
-alias cat='bat -p -P'
+alias bathelp='batcat --plain --language=help'
+alias cat='batcat -p -P'
 alias https='http --default-scheme=https'
 alias l='exa -lga --group-directories-first --time-style=long-iso --color-scale'
 alias ls='exa'
@@ -55,23 +53,26 @@ export VISUAL=vim
 export FZF_COMPLETION_OPTS='--border --info=inline'
 export FZF_COMPLETION_TRIGGER='~~'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_COMMAND='fd --type file --color=always'
+export FZF_DEFAULT_COMMAND='fdfind --type file --color=always'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --ansi'
 export GPG_TTY=$(tty)
-export HOMEBREW_BAT=1
-export HOMEBREW_NO_ANALYTICS=1
-export HOMEBREW_NO_EMOJI=1
-export HOMEBREW_NO_ENV_HINTS=1
 export LESS='-SXFR'
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export PATH=$PATH:$HOME/.local/bin
+export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+export GOROOT=/opt/go
+export PATH=$HOME/.local/bin:$GOROOT/bin:$PATH
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+eval "$(/home/weastur/.rbenv/bin/rbenv init - zsh)"
 
 _fzf_compgen_path() {
-  fd --hidden --follow --exclude ".git" . "$1"
+  fdfind --hidden --follow --exclude ".git" . "$1"
 }
 
 _fzf_compgen_dir() {
-  fd --type d --hidden --follow --exclude ".git" . "$1"
+  fdfind --type d --hidden --follow --exclude ".git" . "$1"
 }
 
 function httpless {
@@ -79,7 +80,7 @@ function httpless {
 }
 
 batdiff() {
-    git diff --name-only --relative --diff-filter=d | xargs bat --diff
+    git diff --name-only --relative --diff-filter=d | xargs batcat --diff
 }
 
 help() {
