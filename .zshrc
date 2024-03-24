@@ -23,6 +23,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 alias mux=tmuxinator
+alias ipython=ipython3
 
 export EDITOR=vim
 export VISUAL=vim
