@@ -9,9 +9,15 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd/mm/yyyy"
 plugins=(
+  1password
+  adb
+  aliases
   ansible
+  ant
+  argocd
   aws
   brew
+  composer
   direnv
   fd
   fzf
@@ -27,6 +33,7 @@ plugins=(
   kubectl
   nmap
   nmap
+  pass
   pip
   podman
   poetry

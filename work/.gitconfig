@@ -1,7 +1,7 @@
 [user]
-    email = me@weastur.com
-    name = Pavel Sapezhka
-    signingkey = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPdgTRXEwl1EXeNCdW44rmX5Jr0QKNJ2onWX0K5aq/tC"
+    email = pavel.sapezhko@easybrain.com
+    name = Pavel Sapezhko
+    signingkey = "/Users/weastur/.ssh/id_ed25519.pub"
 [commit]
     gpgsign = true
 [gpg]
@@ -40,3 +40,5 @@
     prune = true
 [init]
     defaultBranch = main
+[includeIf "gitdir:/Users/weastur/src/p/"]
+     path = .gitconfig-personal
