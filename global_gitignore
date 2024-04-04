@@ -1,0 +1,4 @@
+.venv/
+.projections.json
+.python-version
+.ruby-version

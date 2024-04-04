@@ -1,0 +1,8 @@
+ServerAliveInterval 60
+
+Host *
+  User weastur
+  ForwardAgent yes
+  StrictHostKeyChecking no
+  AddKeysToAgent yes
+  IdentityFile /Users/weastur/.ssh/id_ed25519
