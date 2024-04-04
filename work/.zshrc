@@ -12,6 +12,7 @@ plugins=(
   aws
   brew
   direnv
+  docker
   gh
   git
   git-lfs
