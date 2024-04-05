@@ -9,19 +9,14 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd/mm/yyyy"
 plugins=(
-  aws
   brew
   direnv
   docker
-  gh
   git
   git-lfs
   gitignore
-  golang
   nmap
   pip
-  poetry
-  pre-commit
   python
   ssh-agent
 )
