@@ -10,11 +10,11 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd/mm/yyyy"
 plugins=(
   brew
-  direnv
-  docker
+  gh
   git
   git-lfs
   gitignore
+  golang
   nmap
   pip
   python
@@ -36,8 +36,3 @@ export EDITOR=vim
 export GPG_TTY=$(tty)
 export LESS='-SXFR'
 export PATH=$HOME/.local/bin:$PATH
-
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
