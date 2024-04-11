@@ -9,16 +9,24 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd/mm/yyyy"
 plugins=(
+  aws
   brew
+  direnv
+  docker
   gh
   git
   git-lfs
   gitignore
   golang
+  gpg-agent
   nmap
   pip
+  poetry
+  pre-commit
   python
+  rbenv
   ssh-agent
+  terraform
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -36,3 +44,8 @@ export EDITOR=vim
 export GPG_TTY=$(tty)
 export LESS='-SXFR'
 export PATH=$HOME/.local/bin:$PATH
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
