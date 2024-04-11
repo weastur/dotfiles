@@ -12,7 +12,6 @@ plugins=(
   aws
   brew
   direnv
-  docker
   gh
   git
   git-lfs
@@ -21,10 +20,10 @@ plugins=(
   gpg-agent
   nmap
   pip
+  podman
   poetry
   pre-commit
   python
-  rbenv
   ssh-agent
   terraform
 )
@@ -49,3 +48,4 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+eval "$(rbenv init - zsh)"
