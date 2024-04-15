@@ -2,7 +2,6 @@ ServerAliveInterval 60
 
 Host github.com
   HostName github.com
-  User git
   IdentityFile /Users/weastur/.ssh/id_ed25519_personal
 
 Host bitbucket.org
@@ -18,3 +17,4 @@ Host *
   ForwardAgent yes
   StrictHostKeyChecking no
   AddKeysToAgent yes
+  IdentityFile /Users/weastur/.ssh/id_ed25519
