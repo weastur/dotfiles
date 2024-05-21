@@ -1,7 +1,7 @@
 [user]
     email = me@weastur.com
     name = Pavel Sapezhka
-    signingkey = /Users/weastur/.ssh/id_ed25519
+    signingkey = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPdgTRXEwl1EXeNCdW44rmX5Jr0QKNJ2onWX0K5aq/tC"
 [commit]
     gpgsign = true
 [gpg]
@@ -40,3 +40,4 @@
     prune = true
 [init]
     defaultBranch = main
+
