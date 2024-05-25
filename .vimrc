@@ -8,6 +8,7 @@ filetype indent on
 
 call plug#begin()
 Plug 'hashivim/vim-terraform'
+Plug 'letorbi/vim-colors-modern-borland'
 call plug#end()
 
 autocmd FileType c set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
@@ -182,7 +183,7 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-colorscheme default
+colorscheme borland
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
