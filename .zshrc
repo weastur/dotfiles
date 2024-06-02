@@ -10,6 +10,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="mm/dd/yyyy"
 
 plugins=(
+  docker
   git
   gitignore
   pip
