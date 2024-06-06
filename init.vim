@@ -102,6 +102,9 @@ command! PackClean  call PackInit() | call minpac#clean()
 command! PackStatus packadd minpac | call minpac#status()
 
 let g:python3_host_prog = '/Users/weastur/.pyenv/versions/py3nvim/bin/python'
+let g:loaded_ruby_provider = 0
+let g:loaded_perl_provider = 0
+let g:loaded_node_provider = 0
 
 " FZF
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
