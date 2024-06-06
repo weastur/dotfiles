@@ -10,7 +10,14 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="mm/dd/yyyy"
 
 plugins=(
+  1password
+  adb
+  ag
+  ansible
+  ant
+  aws
   brew
+  composer
   direnv
   fd
   fzf
@@ -18,19 +25,28 @@ plugins=(
   git
   git-lfs
   gitignore
+  golang
   gpg-agent
+  helm
   httpie
   kubectl
   nmap
+  pass
+  perl
   pip
+  pipenv
   podman
   poetry
+  postgres
+  pre-commit
   python
   ripgrep
+  rsync
   rust
   terraform
   tmux
   tmuxinator
+  vagrant
   vault
 )
 

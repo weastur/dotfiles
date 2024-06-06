@@ -1,5 +1,8 @@
 ServerAliveInterval 60
 
+Host wnas
+  HostName synologynas.local
+
 Host *
   User weastur
   ForwardAgent yes
