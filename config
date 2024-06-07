@@ -1,5 +1,11 @@
 ServerAliveInterval 60
 
+Host devbox
+  HostName 142.132.146.211
+
+Host ghrunners
+  HostName 37.27.110.253
+
 Host wnas
   HostName synologynas.local
 
