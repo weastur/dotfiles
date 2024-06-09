@@ -8,14 +8,6 @@ Host wnas
   User weastur
   HostName synologynas.local
 
-Host devbox
-  User weastur
-  HostName 142.132.146.211
-
-Host ghrunners
-  User weastur
-  HostName 37.27.110.253
-
 Host tor1-infra-smb
   HostName tor1-infra-smb.etrigan.net
   User root
