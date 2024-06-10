@@ -2,16 +2,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "lldb",
+            "name": "Python: PyPy 3.10",
+            "type": "debugpy",
             "request": "launch",
-            "name": "Launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": [],
-            "cwd": "${workspaceFolder}",
-            "preLaunchTask": "build",
-            "sourceLanguages": [
-                "c"
-            ]
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "python": "/opt/homebrew/bin/pypy3.10",
         }
     ]
 }
