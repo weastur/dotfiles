@@ -8,6 +8,9 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "python": "/opt/homebrew/bin/pypy3.10",
+            "env": {
+                "LOCAL": "1"
+            }
         }
     ]
 }
