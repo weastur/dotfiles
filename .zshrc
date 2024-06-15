@@ -10,7 +10,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="mm/dd/yyyy"
 
 plugins=(
-  1password
   brew
   direnv
   fd
@@ -19,6 +18,7 @@ plugins=(
   git
   git-lfs
   gitignore
+  gpg-agent
   httpie
   nmap
   pip
@@ -27,6 +27,7 @@ plugins=(
   python
   ripgrep
   rsync
+  ssh-agent
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -65,7 +66,6 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export PATH=$PATH:$HOME/.local/bin
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export CONTAINERS_MACHINE_PROVIDER=applehv
-export SSH_AUTH_SOCK="/Users/weastur/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
 _fzf_compgen_path() {
   fd --hidden --follow --exclude ".git" . "$1"
