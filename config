@@ -8,3 +8,4 @@ Host *
   ForwardAgent yes
   StrictHostKeyChecking no
   AddKeysToAgent yes
+  IdentityFile /Users/weastur/.ssh/id_ed25519
