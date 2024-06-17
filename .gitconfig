@@ -40,4 +40,5 @@
     prune = true
 [init]
     defaultBranch = main
-
+[includeIf "gitdir:/Users/weastur/src/p/"]
+    path = .gitconfig-work
