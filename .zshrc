@@ -10,7 +10,14 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="mm/dd/yyyy"
 
 plugins=(
+  1password
+  adb
+  ag
+  ansible
+  ant
+  aws
   brew
+  composer
   direnv
   fd
   fzf
@@ -18,28 +25,41 @@ plugins=(
   git
   git-lfs
   gitignore
+  golang
   gpg-agent
+  helm
   httpie
+  kubectl
   nmap
+  pass
+  perl
   pip
+  pipenv
+  podman
   poetry
+  postgres
   pre-commit
   python
   ripgrep
   rsync
+  rust
   ssh-agent
+  terraform
+  tmux
+  tmuxinator
+  vagrant
+  vault
 )
 
 source $ZSH/oh-my-zsh.sh
 
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-  autoload -Uz compinit
-  compinit
-fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(rbenv init - zsh)"
 
 alias bathelp='bat --plain --language=help'
 alias cat='bat -p -P'
@@ -47,6 +67,7 @@ alias https='http --default-scheme=https'
 alias l='exa -lga --group-directories-first --time-style=long-iso --color-scale'
 alias ls='exa'
 alias lt="l -T -L 2"
+alias mux=tmuxinator
 alias ipython=ipython3
 
 export EDITOR=vim
@@ -66,6 +87,7 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export PATH=$PATH:$HOME/.local/bin
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export CONTAINERS_MACHINE_PROVIDER=applehv
+export SSH_AUTH_SOCK="/Users/weastur/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
 _fzf_compgen_path() {
   fd --hidden --follow --exclude ".git" . "$1"
