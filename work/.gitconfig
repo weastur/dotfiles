@@ -1,7 +1,7 @@
 [user]
     email = pavel.sapezhko@easybrain.com
     name = Pavel Sapezhko
-    signingkey = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAIQ+FUfWwr0WRNtv73tlT7JeK2XyFIubbFQnQ8a892I"
+    signingkey = /Users/weastur/.ssh/id_ed25519_work
 [commit]
     gpgsign = true
 [gpg]
