@@ -53,6 +53,12 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -69,9 +75,13 @@ alias ls='exa'
 alias lt="l -T -L 2"
 alias mux=tmuxinator
 alias ipython=ipython3
+alias vi=nvim
+alias vim=nvim
 
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
+export VIMCONFIG=~/.config/nvim
+export VIMDATA=~/.local/share/nvim
 export FZF_COMPLETION_OPTS='--border --info=inline'
 export FZF_COMPLETION_TRIGGER='~~'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -87,7 +97,6 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export PATH=$PATH:$HOME/.local/bin
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export CONTAINERS_MACHINE_PROVIDER=applehv
-export SSH_AUTH_SOCK="/Users/weastur/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
 _fzf_compgen_path() {
   fd --hidden --follow --exclude ".git" . "$1"

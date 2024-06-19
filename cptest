@@ -7,7 +7,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
-clang-format --style=Google  -i main.c
+clang-format --style=Google -i main.c
 pbcopy < main.c
 gcc-14 -fno-asm -lm -std=c11 -Wl,-stack_size,0x10000000 -O2 -o program main.c
 
