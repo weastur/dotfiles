@@ -56,7 +56,7 @@ augroup END
 filetype indent on
 filetype plugin on
 
-colorscheme default
+colorscheme koehler
 syntax enable
 command W w !sudo tee % > /dev/null
 
