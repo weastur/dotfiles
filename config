@@ -3,6 +3,7 @@ ServerAliveInterval 60
 Host bitbucket.org
   HostName bitbucket.org
   User git
+  IdentityFile /Users/weastur/.ssh/id_ed25519_work
 
 Host wnas
   HostName synologynas.local
