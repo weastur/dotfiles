@@ -1,6 +1,6 @@
 [user]
-    email = me@weastur.com
-    name = Pavel Sapezhka
+    email = pavel.sapezhko@gmail.com
+    name = Pavel Sapezhko
     signingkey = /Users/weastur/.ssh/id_ed25519
 [commit]
     gpgsign = true

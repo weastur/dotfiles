@@ -11,8 +11,6 @@ Plug 'rodjek/vim-puppet'
 Plug 'hashivim/vim-terraform'
 call plug#end()
 
-autocmd FileType c set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-
 " Set to auto read when a file is changed from the outside
 set autoread
 
