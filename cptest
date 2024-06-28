@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -e
+
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+clang-format --style=Google -i main.c
+pbcopy < main.c
+gcc-14 -fno-asm -lm -std=c11 -Wl,-stack_size,0x10000000 -O2 -o program main.c
+
+for infile in *.in; do
+    outfile="${infile/.in/.out}"
+    perl -0777 -i -pe 's/\s+$//s' "$outfile"
+
+    echo -n "Test $infile..."
+    ./program < "$infile" > output.txt
+    perl -0777 -i -pe 's/\s+$//s' output.txt
+
+    if diff -q output.txt "$outfile" >/dev/null 2>&1; then
+        echo -e "${GREEN} Passed.${NC}"
+    else
+        echo -e "${RED} Failed.${NC}"
+        diff -y output.txt "$outfile";
+    fi
+done
