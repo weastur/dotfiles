@@ -6,7 +6,7 @@ Host bitbucket.org
   IdentityFile /Users/weastur/.ssh/id_ed25519_work
 
 Host wnas
-  HostName synologynas.local
+  HostName wnas.local
 
 Host tor1-infra-smb
   HostName tor1-infra-smb.etrigan.net
