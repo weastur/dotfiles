@@ -10,12 +10,30 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="mm/dd/yyyy"
 
 plugins=(
+  aws
   brew
+  gh
   git
+  git-lfs
+  kubectl
+  podman
+  postgres
+  python
+  redis-cli
   ssh-agent
+  terraform
+  vagrant
+  vault
 )
 
 source $ZSH/oh-my-zsh.sh
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
 
 export EDITOR=vim
 export VISUAL=vim
