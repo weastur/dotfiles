@@ -28,8 +28,11 @@ plugins=(
   rsync
   rust
   ssh-agent
+  terraform
   tmux
   tmuxinator
+  vargant
+  vault
 )
 
 source $ZSH/oh-my-zsh.sh
