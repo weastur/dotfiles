@@ -31,9 +31,10 @@ plugins=(
   terraform
   tmux
   tmuxinator
-  vargant
   vault
 )
+
+zstyle :omz:plugins:ssh-agent identities /Users/weastur/.ssh/id_ed25519 /Users/weastur/.ssh/id_ed25519_work
 
 source $ZSH/oh-my-zsh.sh
 
