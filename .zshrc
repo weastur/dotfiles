@@ -18,7 +18,6 @@ plugins=(
   git
   git-lfs
   httpie
-  iterm2
   nmap
   podman
   poetry
@@ -31,6 +30,8 @@ plugins=(
   tmux
   tmuxinator
 )
+
+zstyle :omz:plugins:ssh-agent identities /Users/weastur/.ssh/id_ed25519 /Users/weastur/.ssh/id_ed25519_work
 
 source $ZSH/oh-my-zsh.sh
 
