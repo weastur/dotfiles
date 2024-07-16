@@ -1,23 +1,7 @@
 ServerAliveInterval 60
 
-Host bitbucket.org
-  HostName bitbucket.org
-  User git
-
 Host wnas
   HostName wnas.local
-
-Host tor1-infra-smb
-  HostName tor1-infra-smb.etrigan.net
-  User root
-
-Host tor1-*
-  User pavelsapezhko
-  IdentityFile /Users/weastur/.ssh/id_ed25519_work
-
-Host fsn1-*
-  User pavelsapezhko
-  IdentityFile /Users/weastur/.ssh/id_ed25519_work
 
 Host *
   User weastur
