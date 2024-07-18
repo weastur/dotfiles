@@ -9,6 +9,7 @@ filetype indent on
 call plug#begin()
 Plug 'rodjek/vim-puppet'
 Plug 'hashivim/vim-terraform'
+Plug 'github/copilot.vim'
 call plug#end()
 
 " Set to auto read when a file is changed from the outside
@@ -288,3 +289,19 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
+function! s:toggle_copilot_buffer() abort
+    if exists("b:copilot_enabled") && b:copilot_enabled
+        let b:copilot_enabled = v:false
+        echom 'Copilot disabled for this buffer'
+    else
+        let b:copilot_enabled = v:true
+        echom 'Copilot enabled for this buffer'
+    endif
+endfunction
+nnoremap <M-c> :call <SID>toggle_copilot_buffer()<CR>
+inoremap <M-c> <Esc>:call <SID>toggle_copilot_buffer()<CR>a
+let g:copilot_filetypes = {
+    \ '*': v:false,
+\ }
+let g:copilot_workspace_folders =
+    \ ["~/src/dotfiles"]
