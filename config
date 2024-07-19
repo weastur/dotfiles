@@ -1,0 +1,14 @@
+ServerAliveInterval 60
+
+Host wnas
+  HostName wnas.local
+
+Host devbox
+  HostName 116.202.146.217
+
+Host *
+  User psapezhko
+  ForwardAgent yes
+  StrictHostKeyChecking no
+  AddKeysToAgent yes
+  IdentityFile /Users/psapezhko/.ssh/id_ed25519
