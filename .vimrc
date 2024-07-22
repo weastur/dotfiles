@@ -6,11 +6,14 @@ set history=500
 filetype plugin on
 filetype indent on
 
-call plug#begin()
-Plug 'rodjek/vim-puppet'
-Plug 'hashivim/vim-terraform'
-Plug 'github/copilot.vim'
-call plug#end()
+au! BufRead,BufNewFile *.pp setfiletype puppet
+au BufRead,BufNewFile *.epp setl ft=epuppet
+au BufRead,BufNewFile Puppetfile setfiletype ruby
+silent! autocmd! filetypedetect BufRead,BufNewFile *.tf
+autocmd BufRead,BufNewFile *.hcl,*.tfbackend set filetype=hcl
+autocmd BufRead,BufNewFile .terraformrc,terraform.rc set filetype=hcl
+autocmd BufRead,BufNewFile *.tf,*.tfvars,*.tftest.hcl set filetype=terraform
+autocmd BufRead,BufNewFile *.tfstate,*.tfstate.backup set filetype=json
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -288,20 +291,3 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
-
-function! s:toggle_copilot_buffer() abort
-    if exists("b:copilot_enabled") && b:copilot_enabled
-        let b:copilot_enabled = v:false
-        echom 'Copilot disabled for this buffer'
-    else
-        let b:copilot_enabled = v:true
-        echom 'Copilot enabled for this buffer'
-    endif
-endfunction
-nnoremap <M-c> :call <SID>toggle_copilot_buffer()<CR>
-inoremap <M-c> <Esc>:call <SID>toggle_copilot_buffer()<CR>a
-let g:copilot_filetypes = {
-    \ '*': v:false,
-\ }
-let g:copilot_workspace_folders =
-    \ ["~/src/dotfiles"]
