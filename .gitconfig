@@ -15,15 +15,20 @@
 [push]
     default = simple
     autoSetupRemote = true
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
 [core]
+    pager = delta
     editor = vim
     excludesfile = ~/.gitignore
 [diff]
-    tool = vimdiff
-    renameLimit = 1833
+    colorMoved = default
+[merge]
+    conflictstyle = diff3
 [alias]
     lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-    di = diff
     br = branch
     ci = commit
     st = status
@@ -40,3 +45,5 @@
     prune = true
 [init]
     defaultBranch = main
+[includeIf "gitdir:/Users/psapezhko/src/w/"]
+    path = .gitconfig-work
