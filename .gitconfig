@@ -1,13 +1,13 @@
 [user]
     email = pavel.sapezhko@gmail.com
     name = Pavel Sapezhko
-    signingkey = /Users/psapezhko/.ssh/id_ed25519
+    signingkey = /Users/weastur/.ssh/id_ed25519
 [commit]
     gpgsign = true
 [gpg]
     format = ssh
 [gpg.ssh]
-    allowedSignersFile = "/Users/psapezhko/.ssh/allowed_signers"
+    allowedSignersFile = "/Users/weastur/.ssh/allowed_signers"
 [tag]
     forceSignAnnotated = true
 [branch]
@@ -45,5 +45,5 @@
     prune = true
 [init]
     defaultBranch = main
-[includeIf "gitdir:/Users/psapezhko/src/w/"]
+[includeIf "gitdir:/Users/weastur/src/w/"]
     path = .gitconfig-work
