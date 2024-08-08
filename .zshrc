@@ -12,7 +12,6 @@ HIST_STAMPS="mm/dd/yyyy"
 plugins=(
   brew
   direnv
-  fd
   fzf
   gh
   git
@@ -24,12 +23,10 @@ plugins=(
   pre-commit
   python
   rbenv
-  ripgrep
   rsync
   rust
   ssh-agent
-  tmux
-  tmuxinator
+  terraform
 )
 
 zstyle :omz:plugins:ssh-agent identities /Users/weastur/.ssh/id_ed25519 /Users/weastur/.ssh/id_ed25519_work
