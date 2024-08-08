@@ -19,6 +19,7 @@
     diffFilter = delta --color-only
 [delta]
     navigate = true
+    syntax-theme = Monokai Extended
 [core]
     pager = delta
     editor = vim
