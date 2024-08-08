@@ -45,8 +45,8 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias bathelp='bat --plain --language=help'
-alias cat='bat -p -P'
+alias bathelp='bat --plain --language=help --theme=Monokai\ Extended'
+alias cat='bat -p -P --theme=Monokai\ Extended'
 alias docker=podman
 alias grep='grep --color=auto --binary-files=without-match --exclude-dir=.git --exclude-dir=.cache'
 alias https='http --default-scheme=https'
@@ -80,7 +80,7 @@ export HOMEBREW_NO_EMOJI=1
 export HOMEBREW_NO_ENV_HINTS=1
 export LESS='-SXFR'
 export LESSOPEN="| /opt/homebrew/bin/src-hilite-lesspipe.sh %s"
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=Monokai\ Extended'"
 export PATH=$PATH:$HOME/.local/bin:$HOME/go/bin
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export VISUAL=vim
@@ -98,7 +98,7 @@ function httpless {
 }
 
 batdiff() {
-  git diff --name-only --relative --diff-filter=d | xargs bat --diff
+  git diff --name-only --relative --diff-filter=d | xargs bat --diff --theme=Monokai\ Extended
 }
 
 help() {
